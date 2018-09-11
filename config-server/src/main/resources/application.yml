@@ -1,5 +1,5 @@
 server:
-  port: 8769
+  port: 8768
 spring:
   cloud:
     config:
@@ -12,5 +12,10 @@ spring:
       label: master
   application:
     name: config-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
 
