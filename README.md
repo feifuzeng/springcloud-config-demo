@@ -1,6 +1,6 @@
 # springcloud-config-demo
 spring cloud bus demo
-* 本地准备RabbitMQ 并启动，端口57672
+* 本地准备RabbitMQ 并启动，端口5672
 * 依次启动工程config-eureka-server -p-8761
 *  config-server -p-8768
 *  config-client -p-8792 -p-8763(部署两个实例)
