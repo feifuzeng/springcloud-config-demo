@@ -1,13 +1,11 @@
 # springcloud-config-demo
-利用eureka-server构建高可用config-server release-1.2.0<br>
+spring cloud bus demo
+* 本地准备RabbitMQ 并启动，端口57672
+* 依次启动工程config-eureka-server -p-8761
+*  config-server -p-8768
+*  config-client -p-8792 -p-8763(部署两个实例)
 
-依次启动<br>
-config-eureka-server  -p-8761<br>
-config-server  -p-8769.8769<br>
-config-client  -p-8762(配置文件中获取)<br>
-工程<br>
-打开浏览器访问：http://localhost:8762/hi
-浏览器显示：foo version xixi
-<br>
-搭建高可用Config Server 
-将Config Server 多实例部署，多次启动config-client工程，从控制台可以看出它会轮流从http://localhost:8769和http://localhost:8768的config server读取配置文件
+* 启动成功之后，访问http://localhost:8763/hi和http://localhost:8762/hi<br>
+可以看到从git上获取到的config-client-dev配置文件中foo变量的值
+* 手动修改远程git仓库foo变量的值，并调用post请求http://localhost:8762/bus/refresh或http://localhost:8763/bus/refresh
+<br>再去访问http://localhost:8763/hi和http://localhost:8762/hi可以看到foo的新值

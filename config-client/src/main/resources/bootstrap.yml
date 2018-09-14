@@ -1,4 +1,8 @@
+server:
+  port: 8763
 spring:
+  profiles:
+    active: dev
   application:
     name: config-client
   cloud:
@@ -7,8 +11,27 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
-  profiles:
-    active: dev
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include:  bus-refresh
+
+
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
 
 eureka:
   client:
